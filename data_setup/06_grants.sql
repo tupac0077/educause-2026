@@ -1,0 +1,12 @@
+GRANT USE CATALOG ON CATALOG serverless_student360_v2_catalog TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT USE SCHEMA ON SCHEMA serverless_student360_v2_catalog.gold TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT USE SCHEMA ON SCHEMA serverless_student360_v2_catalog.silver TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT SELECT ON SCHEMA serverless_student360_v2_catalog.gold TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT SELECT ON SCHEMA serverless_student360_v2_catalog.silver TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT MODIFY ON TABLE serverless_student360_v2_catalog.gold.finance_action_log TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT MODIFY ON TABLE serverless_student360_v2_catalog.gold.aid_appeals TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT MODIFY ON TABLE serverless_student360_v2_catalog.gold.intervention_log TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT EXECUTE ON FUNCTION serverless_student360_v2_catalog.gold.mask_email TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT EXECUTE ON FUNCTION serverless_student360_v2_catalog.gold.mask_dob TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+GRANT EXECUTE ON FUNCTION serverless_student360_v2_catalog.gold.mask_national_id TO `d7ed3475-7ea8-4fd1-8ddb-7f19ea833877`;
+SELECT 'grants applied' AS status;

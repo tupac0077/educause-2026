@@ -1,0 +1,29 @@
+bundle:
+  name: northstar-finance
+
+variables:
+  app_name:
+    description: Databricks app name
+    default: northstar-finance
+
+sync:
+  include:
+    - .build
+
+artifacts:
+  default:
+    build: echo "pre-built"
+
+resources:
+  apps:
+    northstar-finance:
+      name: ${var.app_name}
+      description: "Northstar University — Office of Finance: AI/BI, Genie agent, and finance early-warning"
+      source_code_path: ./.build
+
+targets:
+  runtime:
+    mode: development
+    default: true
+    workspace:
+      host: https://fevm-serverless-student360-v2.cloud.databricks.com

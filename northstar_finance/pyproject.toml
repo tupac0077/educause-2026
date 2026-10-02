@@ -1,0 +1,55 @@
+[project]
+name = "student360"
+dynamic = ["version"]
+description = "Student 360 - MortarCAPS Higher Education Dashboard"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.119.0",
+    "pydantic-settings>=2.11.0",
+    "uvicorn>=0.37.0",
+    "databricks-sdk>=0.74.0",
+    "openai>=1.54.0",
+    "mlflow-skinny>=2.19.0",
+]
+
+[dependency-groups]
+dev = [
+    "ty>=0.0.12",
+]
+
+[tool.apx.metadata]
+app-name = "student360"
+app-slug = "student360"
+app-entrypoint = "student360.backend.app:app"
+api-prefix = "/api"
+metadata-path = "src/student360/_metadata.py"
+
+[tool.apx.ui]
+root = "src/student360/ui"
+
+[tool.apx.ui.registries]
+"@animate-ui" = "https://animate-ui.com/r/{name}.json"
+"@ai-elements" = "https://registry.ai-sdk.dev/{name}.json"
+"@svgl" = "https://svgl.app/r/{name}.json"
+
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning>=0.7.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.uv-dynamic-versioning]
+vcs = "git"
+fallback-version = "0.0.0"
+
+[tool.hatch.build.hooks.version]
+path = "src/student360/_version.py"
+template = '''
+version = "{version}"
+'''
+
+[tool.hatch.build]
+artifacts = ["src/student360/__dist__", "src/student360/_metadata.py"]
+exclude = ["src/student360/ui"]

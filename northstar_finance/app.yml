@@ -1,0 +1,37 @@
+command: ["uvicorn", "student360.backend.app:app", "--workers", "1"]
+
+# OBO (on-behalf-of-user) scopes minted into X-Forwarded-Access-Token.
+# model-serving is required for the agent's LLM calls to /serving-endpoints.
+user_authorization:
+  scopes:
+    - model-serving
+    - sql
+    - dashboards.genie
+    - catalog.catalogs:read
+    - catalog.schemas:read
+    - catalog.tables:read
+    - iam.current-user:read
+
+env:
+  - name: STUDENT360_CATALOG
+    value: serverless_student360_v2_catalog
+  - name: STUDENT360_EDITION
+    value: northstar_finance
+  - name: DATABRICKS_WAREHOUSE_ID
+    value: "8e556c6c71086033"
+  - name: GENIE_SPACE_ID
+    value: "01f1bb79b35d179396e81fe7c2041fc2"
+  - name: ADVISOR_GENIE_SPACE_ID
+    value: "01f1bb85beda1573a198a9691d5c23aa"
+  - name: AGENT_MODEL
+    value: databricks-gpt-5-4
+  - name: AGENT_MLFLOW_EXPERIMENT_PATH
+    value: "/Shared/northstar_finance/agent-traces"
+  - name: DASH_FINANCIAL_HEALTH
+    value: "01f1bb8cb3a61dcf9a894fe77c2133d6"
+  - name: DASH_RESEARCH_FINANCE
+    value: "01f1bb8cb55811068eccdbfb16db6c37"
+  - name: DASH_ENROLLMENT_FINANCE
+    value: "01f1bb8cb67012ac84abfa2388b903bb"
+  - name: WORKSPACE_ORG
+    value: "7474654482161436"
